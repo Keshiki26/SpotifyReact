@@ -7,7 +7,10 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	background-color: #fffdfd;
 }
-
+a {
+	color: white;
+	text-decoration: none;
+}
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
@@ -41,6 +44,9 @@ code {
 }
 .playerContents {
 	padding: 20px;
+}
+.playerContents p {
+	color: rgb(206, 206, 206);
 }
 .searchVideos {
 	max-height: 400px;
