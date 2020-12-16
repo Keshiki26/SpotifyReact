@@ -5,6 +5,7 @@ import SearchBar from './SearchBar';
 import Contentbox from './Contentbox';
 import { Route } from 'react-router-dom';
 import axios from './YoutubeAPI';
+import PlayVideo from './PlayVideo';
 
 const useStyles = makeStyles({
 	root: {
@@ -17,6 +18,7 @@ class App extends React.Component {
 		super(props);
 		this.state = {
 			videos: [],
+			currentVid: [],
 		};
 	}
 
@@ -30,9 +32,12 @@ class App extends React.Component {
 			}
 		);
 		this.setState({ videos: response.data.items });
+		this.onCurrentVideo([]);
 	};
 
-	componentDidMount() {}
+	onCurrentVideo = (video) => {
+		this.setState({ currentVid: video });
+	};
 
 	render() {
 		return (
@@ -42,12 +47,21 @@ class App extends React.Component {
 						path="/"
 						render={() => <SearchBar onSearchSubmit={this.onSearchSubmit} />}
 					></Route>
+					<Route
+						path="/video"
+						render={() => <PlayVideo video={this.state.currentVid} />}
+					></Route>
 				</Grid>
 				<Grid item xs={12}>
 					<Route
 						exact
 						path="/"
-						render={() => <Contentbox videos={this.state.videos} />}
+						render={() => (
+							<Contentbox
+								onClickVideo={this.onCurrentVideo}
+								videos={this.state.videos}
+							/>
+						)}
 					/>
 				</Grid>
 			</Grid>

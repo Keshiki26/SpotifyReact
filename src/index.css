@@ -5,9 +5,104 @@ body {
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	background-color: #fffdfd;
 }
 
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
+}
+.videoBoxBox {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 90vh;
+}
+.formSearch {
+	width: 100%;
+}
+.videoBox {
+	display: flex;
+	background-color: rgb(0, 0, 0);
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	color: white;
+	flex-wrap: wrap;
+}
+.videoPlayer {
+	width: 100%;
+}
+
+.videoPlayerBox,
+.playerContents {
+	width: 500px;
+	font-size: 1.1em;
+}
+.playerContents {
+	padding: 20px;
+}
+.searchVideos {
+	max-height: 400px;
+	min-height: 300px;
+	transition: 1s all ease-in-out !important;
+	cursor: pointer;
+	margin: 0;
+	background-color: rgb(255, 255, 255);
+	padding: 0;
+	background-size: contain !important;
+}
+.searchVideos:hover {
+	height: 400px;
+}
+.cardContentText {
+	color: white !important;
+	text-align: center;
+	font-size: 1.2em !important;
+}
+.cardVideo {
+	padding: 0 !important;
+	margin: 0 !important;
+	background-color: rgb(0, 0, 0) !important;
+	color: white;
+	border-bottom: 1px black solid;
+	border-top: 1px solid black;
+}
+@media screen and (max-width: 600px) {
+	.videoPlayer {
+		margin: 0;
+	}
+
+	.videoPlayerBox,
+	.playerContents {
+		width: 400px;
+	}
+	.playerContents {
+		font-size: 0.8em;
+	}
+}
+@media screen and (max-width: 515px) {
+	.searchVideos {
+		max-height: 300px;
+		min-height: 200px;
+	}
+}
+@media screen and (max-width: 420px) {
+	.videoPlayerBox,
+	.playerContents {
+		width: 300px;
+	}
+	.playerContents {
+		font-size: 0.6em;
+	}
+}
+@media screen and (max-width: 330px) {
+	.videoPlayerBox,
+	.playerContents {
+		width: 230px;
+	}
+	.playerContents {
+		font-size: 0.6em;
+		padding: 0 20px;
+	}
 }

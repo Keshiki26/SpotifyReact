@@ -13,18 +13,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { fade, makeStyles, withStyles } from '@material-ui/core/styles';
 import { green } from '@material-ui/core/colors';
+import { withRouter } from 'react-router';
 
-const styles = {
-	root: {
-		background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-		border: 0,
-		borderRadius: 3,
-		boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-		color: 'white',
-		height: 48,
-		padding: '0 30px',
-	},
-};
 class SearchBar extends Component {
 	state = {
 		term: '',
@@ -35,23 +25,22 @@ class SearchBar extends Component {
 	onSubmitChange = (e) => {
 		e.preventDefault();
 		this.props.onSearchSubmit(this.state.term);
+		this.props.history.push('/');
 	};
 
 	render() {
-		const { classes } = this.props;
-
 		return (
 			<AppBar position="static" color="secondary">
 				<Toolbar>
 					<IconButton color="inherit">
 						<SearchIcon />
 					</IconButton>
-					<form onSubmit={this.onSubmitChange}>
+					<form onSubmit={this.onSubmitChange} className="formSearch">
 						<InputBase
 							placeholder="Search…"
 							value={this.state.term}
 							onChange={this.onSearchChange}
-							fullWidth
+							fullWidth={true}
 						/>
 					</form>
 				</Toolbar>
@@ -59,7 +48,7 @@ class SearchBar extends Component {
 		);
 	}
 }
-export default withStyles(styles)(SearchBar);
+export default withRouter(SearchBar);
 // <Toolbar>
 //     <IconButton
 //             edge="start"

@@ -1,36 +1,40 @@
 import { Grid } from '@material-ui/core';
-import React, { Component } from 'react';
+import React from 'react';
 import YouTube from 'react-youtube';
 
-export default class PlayVideo extends Component {
-	render() {
-		return (
-			<div>
-				{this.props.videos.map((video, index) => {
+const PlayVideo = (props) => {
+	return (
+		<div className="videoBoxBox">
+			<div className="videoBox">
+				{props.video.map((video, index) => {
 					console.log(video);
 					return (
-						<Grid item xs={12} direction="column">
+						<div className="videoPlayerBox">
 							<YouTube
+								className="videoPlayer"
 								videoId={video.id.videoId}
 								opts={{
-									height: '390',
-									width: '640',
 									playerVars: {
 										autoplay: 1,
 									},
 								}}
 								autoplay={false}
 							/>
-							{/* <iframe
-                            key={index}
-                            src={`https://www.youtube.com/embed/${}`}
-                            frameborder="0"
-                            type="text/html"
-                        /> */}
-						</Grid>
+						</div>
 					);
 				})}
+				<div className="videoInfo">
+					{props.video.map((video, index) => {
+						return (
+							<div className="playerContents">
+								<h2>{video.snippet.title}</h2>
+								<p>{video.snippet.description}</p>
+							</div>
+						);
+					})}
+				</div>
 			</div>
-		);
-	}
-}
+		</div>
+	);
+};
+export default PlayVideo;
